@@ -1,0 +1,40 @@
+body {
+    font-family: 'Fira Code', monospace;    
+    background-color: black;
+    color: white;
+}
+
+hr {
+    text-align: center;
+    width: 25%;
+}
+
+h1, h4{
+    text-align: center;
+}
+
+button {
+    margin-top: 10px;
+    transition-duration: 0.4s;
+  }
+  
+button:hover {
+    background-color: #303960; /* Green */
+    color: white;
+}
+
+.button-wrapper {
+    text-align: center;
+}
+
+label {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}

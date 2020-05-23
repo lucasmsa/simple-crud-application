@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Montserrat:ital,wght@1,300&display=swap" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet" type="text/css">
+    <title>Update</title>
+</head>
+<body>
+    <h1>Update <%=product_desc%> Product [Category ID - <%= category_id %>]</h1>
+    <hr style="margin-bottom: 30px; width: 50%;">
+    <form action="/update/<%=product_id%>" method="POST">
+        <input type="text" name="product_desc" <%- "placeholder='Product Name'" %>>
+        <br>
+        <input type="text" name="category_id" <%- "placeholder='Product category ID'" %>>
+        <div class="button-wrapper">
+            <button style="margin-top: 25px;" type="submit">Submit</button>
+        </div>
+    </form>
+</body>
+</html>
