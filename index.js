@@ -2,11 +2,14 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const http = require('http')
 const ejs = require('ejs')
-const sqlite3 = require('sqlite3').verbose();
+var DataTypes = require('sequelize/lib/data-types')
+const sqlite3 = require('sqlite3')
+const { open } = require('sqlite')
+const Sequelize = require('sequelize')
+const path = require('path')
 
 const app = express()
-
-const db = new sqlite3.Database('./db/products.db', sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, err => {
+const db = new sqlite3.Database('./database/products.db', sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, err => {
     if (err) {
         console.error(err.message)
     } else {
@@ -17,36 +20,6 @@ const db = new sqlite3.Database('./db/products.db', sqlite3.OPEN_READWRITE | sql
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static(__dirname + '/public'))
-
-// Creating Category table
-const create_category = `CREATE TABLE IF NOT EXISTS Category ( 
-    id INTEGER PRIMARY KEY,
-    categoria TEXT);`
-
-db.run(create_category, err => {
-    if(err) {
-        console.error(err.message)
-    } else {
-        console.log("Successful creation of the 'Category' tables")
-    }
-})
-
-// Creating Product table
-const create_product = `CREATE TABLE IF NOT EXISTS Product ( 
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        id_categoria INTEGER, 
-        descricao TEXT,
-        FOREIGN KEY(id_categoria) REFERENCES Category(id)
-);`
-
-db.run(create_product, err => {
-    if(err) {
-        console.error(err.message)
-    } else {
-        console.log("Successful creation of the 'Product' tables")
-    }
-})
-
 
 // Returns all products
 app.get('/products', (req, res) => {
