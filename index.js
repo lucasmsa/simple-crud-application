@@ -21,9 +21,16 @@ app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static(__dirname + '/public'))
 
+
+app.get('/hoho', (req, res) => {
+    res.send({express: 'wasaaaaap'})
+})
+
 // Returns all products
 app.get('/products', (req, res) => {
+
     const products = "SELECT * FROM Product ORDER BY id"
+
     db.all(products, [], (err, rows) => {
         if (err){
             return console.error(err.message)
@@ -68,7 +75,7 @@ app.get('/delete/:product_id', (req, res) => {
             return console.error(err.message)
         } else {
             console.log('Product deleted successfully')
-            res.redirect('/products')
+            res.send('Deleted product with id: ' + id_delete)
         }
     })
 })
@@ -128,9 +135,9 @@ app.get('/new', (req, res) => {
     res.render('new')
 })
 
-
-app.listen(3000, () => {
-  console.log('Server listening on port 3000')
+const port = process.env.PORT || 5000
+app.listen(port, () => {
+  console.log('Server listening on port ' + port)
 })
 
 // db.close(err => {
