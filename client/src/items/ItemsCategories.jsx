@@ -21,7 +21,7 @@ function ItemsCategories(props) {
                 width="35%"
                 opacity="40%"
             />
-          <h5><Link to={'/categories/${props.id}'} className="textNames" style={{color: "black"}} onClick={handleCategory}>{props.categoria}</Link> [{props.id}]
+          <h5><Link to={'/categories/${props.id}'} className="textNames" style={{color: "#485159"}} onClick={handleCategory}>{props.categoria}</Link> [{props.id}]
             <Link>
             <DeleteOutlineSharpIcon
                 className='delete' 

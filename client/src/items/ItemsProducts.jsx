@@ -21,17 +21,17 @@ function ItemsProducts(props) {
                 width="35%"
                 opacity="40%"
             />
-          <h5><Link className="textNames" style={{color: "black"}} onClick={handleProduct}>{props.descricao}</Link> [{props.id_categoria}]
+          <h5><Link className="textNames" style={{color: "#485159"}} onClick={handleProduct}>{props.descricao}</Link> [{props.id_categoria}]
             <Link>
             <DeleteOutlineSharpIcon 
                 className='delete' 
-                color="secondary"
+                style={{fill: "#B03432"}}
                 onClick={handleClick}
             />
             </Link>
             <Link>
             <EditIcon   
-                color="primary"
+                style={{fill: "#4F70B3"}}
                 onClick=""
             />
             </Link>

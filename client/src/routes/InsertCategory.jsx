@@ -33,7 +33,7 @@ export default class InsertCategory extends React.Component {
 
   render() {
       return (
-            <div>
+            <div className='fill-blue'>
                 <form onSubmit={this.handleSubmit} className='insertion'>
                     <h1>INSERT A NEW CATEGORY</h1>
                     <label>

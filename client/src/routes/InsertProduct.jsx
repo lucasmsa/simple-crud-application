@@ -55,7 +55,7 @@ export default class InsertProduct extends React.Component {
 
   render() {
       return (
-            <div>
+            <div style={{paddingBottom: '23%'}}>
                 <form onSubmit={this.handleSubmit} className='insertion'>
                     <h1>INSERT A NEW PRODUCT</h1>
                     <label>
@@ -66,10 +66,7 @@ export default class InsertProduct extends React.Component {
                     <input placeholder="Product Category" type='text' name='id_categoria' onChange={this.handleChange} />
                     </label>
                     <br />
-                    <Button color="dark" type="submit" className='btnButtons'>Add</Button>{' '}
-                    
-
-                    
+                    <Button color="dark" type="submit" className='btnButtons'>Add</Button>                    
                 </form>
             </div>
       )

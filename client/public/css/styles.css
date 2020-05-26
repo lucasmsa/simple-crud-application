@@ -1,3 +1,25 @@
+html, body, #app, #app>div {
+    height: 100%
+}
+
+body {
+    background-color: #9BADBF;
+}
+
+div {
+    background-color: #9BADBF;
+    color: #485159;   
+}
+
+.fill-blue {
+    padding-bottom: 30%;
+}
+  
+.full-height {
+    height: 100%;
+}
+
+
 h1 {
     color: '#485159';
     font-family: 'Rubik', sans-serif; 
@@ -6,6 +28,7 @@ h1 {
 
 .textNames {
     font-family: 'Rubik', sans-serif; 
+    font-size: 1.5rem;
     margin: 1%;
 }
 
@@ -15,7 +38,7 @@ h5 {
 
 body {
     font-family: 'Rubik', sans-serif;
-    background: #50a3a2;
+    background-color: #50a3a2;
 }
 .items {
     margin-top: 3.5%;
@@ -49,6 +72,8 @@ input {
 
 .lists {
     margin-top: 3.5%;
+    padding-bottom: 5%;
+    margin-bottom: -10%;
 }
 
 .btnButtons {
