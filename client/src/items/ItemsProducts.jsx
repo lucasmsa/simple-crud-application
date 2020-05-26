@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import DeleteOutlineSharpIcon from '@material-ui/icons/DeleteOutlineSharp';
 import EditIcon from '@material-ui/icons/Edit';
 
@@ -9,21 +10,37 @@ function ItemsProducts(props) {
         props.onDelete(props.id)
     }
 
+    function handleProduct(){
+        props.onProduct(props.id)
+    }
+
     return (
         <div className="items">
-          <li><h5>{props.descricao} [{props.id_categoria}]
+        <hr 
+                color='rgba(93,104,115,0.2)'
+                width="35%"
+                opacity="40%"
+            />
+          <h5><Link className="textNames" style={{color: "black"}} onClick={handleProduct}>{props.descricao}</Link> [{props.id_categoria}]
+            <Link>
             <DeleteOutlineSharpIcon 
+                className='delete' 
                 color="secondary"
                 onClick={handleClick}
             />
-            <EditIcon 
+            </Link>
+            <Link>
+            <EditIcon   
                 color="primary"
                 onClick=""
             />
+            </Link>
             </h5>  
-            </li>
+            
             <hr 
-                width="25%"
+                color='rgba(93,104,115,0.2)'
+                width="35%"
+                opacity="40%"
             />
         </div>
       );

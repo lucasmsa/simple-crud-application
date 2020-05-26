@@ -1,0 +1,65 @@
+h1 {
+    color: '#485159';
+    font-family: 'Rubik', sans-serif; 
+    margin-bottom: 5%;
+}
+
+.textNames {
+    font-family: 'Rubik', sans-serif; 
+    margin: 1%;
+}
+
+h5 {
+    padding: 1.5%;
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+    background: #50a3a2;
+}
+.items {
+    margin-top: 3.5%;
+    margin-bottom: 2%;
+    margin: auto 10%;
+    text-align: center;
+    padding: 2%;
+    /*font-family: 'Muli', sans-serif;*/
+}
+
+input {
+    border: 1px solid black;
+    background-color: rgba(252, 252, 252, 0.2);
+    width: 250px;
+    border-radius: 3px;
+    font-family: "Source Sans Pro", sans-serif;
+    padding: 10px 15px;
+    margin: 0 auto 10px auto;
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    color: black;
+    font-weight: 300;
+  }
+
+.insertion {
+    margin: 6% 20%;
+    padding: 2%;
+    text-align: center;
+}
+
+.lists {
+    margin-top: 3.5%;
+}
+
+.btnButtons {
+    width: 12.5%;
+    margin-top: 3.5%;
+}
+
+.delete {
+    margin: auto 2%;
+}
+
+label {
+    margin: 2%;
+}

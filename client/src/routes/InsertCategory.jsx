@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { UncontrolledAlert } from 'reactstrap';
+import { UncontrolledAlert, Button } from 'reactstrap';
 
 export default class InsertCategory extends React.Component {
   state = {
@@ -34,16 +34,13 @@ export default class InsertCategory extends React.Component {
   render() {
       return (
             <div>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit} className='insertion'>
+                    <h1>INSERT A NEW CATEGORY</h1>
                     <label>
-                    Category name:
-                    <input type='text' name='categoria' onChange={this.handleChange} />
+                    <input placeholder='Category name' type='text' name='categoria' onChange={this.handleChange} />
                     </label>
-                    <button type="submit">Add</button>
-                    <UncontrolledAlert color="info">
-                        {this.state.categoria} has been added to categories!
-                    </UncontrolledAlert> 
-
+                    <br />
+                    <Button color="dark" type="submit" className='btnButtons'>Add</Button>{' '}
                     
                 </form>
             </div>

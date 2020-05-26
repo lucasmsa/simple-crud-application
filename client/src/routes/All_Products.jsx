@@ -15,6 +15,10 @@ export default class ProductsList extends React.Component {
           window.location.reload(false);
         })
     }
+
+    getProductInfo = id => {
+      console.log(id)
+    }
   
     componentDidMount() {
       axios.get(`http://localhost:5000/products`)
@@ -26,7 +30,7 @@ export default class ProductsList extends React.Component {
   
     render() {
       return (
-        <ul>
+        <ul className='lists'>
           { this.state.products.map(
             product => <ItemsProducts 
                           key={product.id}
@@ -34,6 +38,7 @@ export default class ProductsList extends React.Component {
                           descricao={product.descricao}
                           id_categoria={product.id_categoria}
                           onDelete={this.deleteItem}
+                          onProduct={this.getProductInfo}
                           />)}
         </ul>
       )

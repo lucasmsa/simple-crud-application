@@ -1,12 +1,20 @@
 import React from 'react';
 import axios from 'axios';
 import { UncontrolledAlert } from 'reactstrap';
+import { Button } from 'reactstrap';
+import FlashMessage from 'react-flash-message'
 
 export default class InsertProduct extends React.Component {
   state = {
       descricao: '',
       id_categoria: ''
   }
+
+  Message = () => (
+    <FlashMessage duration={5000}>
+      <strong>I will disapper in 5 seconds!</strong>
+    </FlashMessage>
+  )
   
   handleChange = event => {
     
@@ -48,19 +56,18 @@ export default class InsertProduct extends React.Component {
   render() {
       return (
             <div>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit} className='insertion'>
+                    <h1>INSERT A NEW PRODUCT</h1>
                     <label>
-                    Product Description:
-                    <input type='text' name='descricao' onChange={this.handleChange} />
+                    <input placeholder='Product Description' type='text' name='descricao' onChange={this.handleChange} />
                     </label>
+                    <br />
                     <label>
-                    Product Category:
-                    <input type='text' name='id_categoria' onChange={this.handleChange} />
+                    <input placeholder="Product Category" type='text' name='id_categoria' onChange={this.handleChange} />
                     </label>
-                    <button type="submit">Add</button>
-                    <UncontrolledAlert color="info">
-                        {this.state.descricao} has been added to products!
-                    </UncontrolledAlert> 
+                    <br />
+                    <Button color="dark" type="submit" className='btnButtons'>Add</Button>{' '}
+                    
 
                     
                 </form>
