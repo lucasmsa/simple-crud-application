@@ -5,6 +5,7 @@ const ejs = require('ejs')
 var DataTypes = require('sequelize/lib/data-types')
 const sqlite3 = require('sqlite3')
 const { open } = require('sqlite')
+const { ApolloServer } = require('apollo-server-express');
 const Sequelize = require('sequelize')
 const path = require('path')
 
@@ -17,14 +18,20 @@ const db = new sqlite3.Database('./database/products.db', sqlite3.OPEN_READWRITE
     }
 });
 
+
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static(__dirname + '/public'))
 
-
-app.get('/hoho', (req, res) => {
-    res.send({express: 'wasaaaaap'})
-})
+// Add headers
+// This is used to allow React to interact with Node
+app.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    //res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+});
 
 // Returns all products
 app.get('/products', (req, res) => {
@@ -66,35 +73,25 @@ app.get('/products/:product_id', (req, res) => {
     })
 })
 
-// Deletes a product based on its id
-app.get('/delete/:product_id', (req, res) => {
-    const id_delete = req.params.product_id
-    const delete_sql = `DELETE FROM Product WHERE id = ?`
-    db.run(delete_sql, id_delete, err => {
-        if(err) {
-            return console.error(err.message)
-        } else {
-            console.log('Product deleted successfully')
-            res.send('Deleted product with id: ' + id_delete)
-        }
-    })
-})
-
 // Insert a product, with category ID and its description
-app.route('/insert') 
+app.route('/insertProduct') 
     .get((req, res) => {
+        console.log(req.body)
         res.render('insert')
     })
     .post((req, res) => {
+        let stringfiedReq = req.body
+        let stringToParse = Object.keys(stringfiedReq)[0]
+        let product = JSON.parse(stringToParse).newProduct
 
         insert_sql = `INSERT INTO Product (id_categoria, descricao) VALUES (?, ?)`
-        new_product = [req.body.category_id, req.body.product_desc]
+        new_product = [product.id_categoria, product.descricao]
 
         db.run(insert_sql, new_product, err => {
             if(err) {
                 return console.error(err.message)
             } else {
-                console.log('Successfully inserted categories')
+                console.log('Successfully inserted a new product')
             }
         })
 
@@ -102,7 +99,7 @@ app.route('/insert')
 })
 
 // Update a product given its id
-app.route('/update/:product_id')
+app.route('/updateProduct/:product_id')
     .get((req, res) => {
         const find_product = `SELECT * FROM Product WHERE id == ${req.params.product_id}`
         db.all(find_product, [], (err, result) => {
@@ -131,8 +128,139 @@ app.route('/update/:product_id')
         })
     })
 
-app.get('/new', (req, res) => {
-    res.render('new')
+// Deletes a product based on its id
+app.delete('/deleteProduct/:product_id', (req, res) => {
+    const id_delete = req.params.product_id
+    const delete_sql = `DELETE FROM Product WHERE id = ?`
+    db.run(delete_sql, id_delete, err => {
+        if(err) {
+            return console.error(err.message)
+        } else {
+            console.log('Product deleted successfully')
+            res.send('Deleted product with id: ' + id_delete)
+        }
+    })
+})
+
+// Returns all categories
+app.get('/categories', (req, res) => {
+
+    const products = "SELECT * FROM Category ORDER BY id"
+
+    db.all(products, [], (err, rows) => {
+        if (err){
+            return console.error(err.message)
+        } else {
+            res.json(rows)
+        }
+    })
+})
+
+// Returns a determined category given its primary key (id)
+app.get('/categories/:category_id', (req, res) => {
+    const category_id = req.params.category_id
+    const find_category = `SELECT * FROM Category WHERE id == ${category_id}`
+    db.all(find_category, [], (err, result) => {
+        if (err){
+            return console.error(err.message)
+        } else {
+            res.json(result)   
+        }
+    })
+})
+
+// Insert a product, with category ID and its description
+app.route('/insertCategory') 
+    .get((req, res) => {
+        res.render('insert')
+    })
+    .post((req, res) => {
+        console.log(req.body)
+        let stringfiedReq = req.body
+        let stringToParse = Object.keys(stringfiedReq)
+        console.log(stringToParse)
+        let product = JSON.parse(stringToParse).newCategory
+        console.log(product)
+
+        insert_sql = `INSERT INTO Category (categoria) VALUES (?)`
+        new_product = [product.categoria]
+
+        db.run(insert_sql, new_product, err => {
+            if(err) {
+                return console.error(err.message)
+            } else {
+                console.log('Successfully inserted a new category')
+            }
+        })
+
+        res.redirect('/categories')
+})
+
+// Update a product given its id
+app.route('/updateCategory/:category_id')
+    .get((req, res) => {
+        const find_category = `SELECT * FROM Category WHERE id == ${req.params.category_id}`
+        db.all(find_category, [], (err, result) => {
+            if (err){
+                return console.error(err.message)
+            } else {
+                res.render('update', {
+                             product_id: result[0].id,
+                             product_desc: result[0].categoria,
+                             category_id: result[0].categoria
+                        })
+                    }
+                }
+            )
+        })
+    .put((req, res) => {
+        const update_sql = `UPDATE Category SET categoria = ? WHERE (id = ?)`
+        const update_list = [req.body.categoria]
+        db.run(update_sql, update_list, (err, result) => {
+            if(err) {
+                return console.error(err.message)
+            } else {
+                console.log(result)
+                res.redirect('/categories/'+req.params.category_id)
+            }
+        })
+    })
+
+// Deletes a category based on its id
+app.delete('/deleteCategory/:category_id', (req, res) => {
+    const id_delete = req.params.category_id
+    const delete_sql = `DELETE FROM Category WHERE id = ?`
+    db.run(delete_sql, id_delete, err => {
+        if(err) {
+            return console.error(err.message)
+        } else {
+            console.log('Category deleted successfully')
+            res.send('Deleted category with id: ' + id_delete)
+        }
+    })
+})
+
+
+app.get('/productsInCategory/:category_id', (req, res) => {
+    const find_products = `SELECT * FROM Product WHERE id_categoria == ${req.params.category_id}`
+    db.all(find_products, [], (err, result) => {
+        if (err){
+            return console.error(err.message)
+        } else {
+            const category_description = `SELECT * FROM Category WHERE id == ${result[0].id_categoria}`
+            db.all(category_description, [], (err, result_category) => {
+                if(err){
+                    return console.error(err.message)
+                } else {
+                    const category_id = result[0].id_categoria
+                    result[0].id_categoria = result_category
+                    res.json(result)
+                }
+            })
+            
+        }
+    })
+
 })
 
 const port = process.env.PORT || 5000
@@ -140,10 +268,3 @@ app.listen(port, () => {
   console.log('Server listening on port ' + port)
 })
 
-// db.close(err => {
-//     if(err){
-//         console.error(err.message)
-//     } else {
-//         console.log('Successfully closed db')
-//     }
-// })
