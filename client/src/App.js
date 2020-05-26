@@ -22,10 +22,8 @@ import {
   NavbarText
 } from 'reactstrap';
 
-import Home from './routes/Home';
 import InsertProduct from './routes/InsertProduct';
 import InsertCategory from './routes/InsertCategory';
-import Update from './routes/Update';
 import ProductsList from './routes/All_Products';
 import CategoriesList from './routes/All_Categories'
 
@@ -41,12 +39,12 @@ export default function App() {
     <Router >
       <div class='full-height' style={{paddingBottom: '10%'}}>
         <Navbar color="dark" dark expand='md'>
-          <NavbarBrand to='/'>Products</NavbarBrand>
+          <NavbarBrand to='/products'><NavLink><Link to="/products" style={{color: 'white'}}>Products</Link></NavLink></NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar></Collapse>
             <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink><Link to="/" style={{color: 'white'}}>Home</Link></NavLink>
+              <NavLink><Link to="/categories" style={{color: 'white'}}>Categories</Link></NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
@@ -61,18 +59,6 @@ export default function App() {
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
-            <NavItem>
-              
-            </NavItem>
-            <NavItem>
-              <NavLink><Link to="/update" style={{color: 'white'}}>Update</Link></NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink><Link to="/categories" style={{color: 'white'}}>Categories</Link></NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink><Link to="/products" style={{color: 'white'}}>Products</Link></NavLink>
-            </NavItem>
           </Nav>
         </Navbar>
 
@@ -85,17 +71,11 @@ export default function App() {
           <Route path="/insertCategory">
             <InsertCategory />
           </Route>
-          <Route path="/update">
-            <Update />
-          </Route>
           <Route path="/products">
             <ProductsList />
           </Route>
           <Route path="/categories">
             <CategoriesList />
-          </Route>
-          <Route path="/">
-            <Home />
           </Route>
         </Switch>
       </div>
