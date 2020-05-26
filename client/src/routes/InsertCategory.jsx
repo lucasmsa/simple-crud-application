@@ -4,17 +4,28 @@ import { UncontrolledAlert, Button } from 'reactstrap';
 
 export default class InsertCategory extends React.Component {
   state = {
-      categoria: ''
+      categoria: '',
+      bool: false
   }    
   
   handleChange = event => {
     let cat = event.target.value
-    this.setState({
-        categoria: cat
+    this.setState( prevValue => {
+        return {
+            categoria: cat,
+            bool: false
+        }
     })
   } 
 
   handleSubmit = event => {
+    this.setState( prevValue => {
+        return {
+            categoria: prevValue.categoria,
+            bool: true
+            }
+    })
+      
     event.preventDefault()
     const newCategory = {
         categoria: this.state.categoria
@@ -40,8 +51,12 @@ export default class InsertCategory extends React.Component {
                     <input placeholder='Category name' type='text' name='categoria' onChange={this.handleChange} />
                     </label>
                     <br />
-                    <Button color="dark" type="submit" className='btnButtons'>Add</Button>{' '}
-                    
+                    <Button color="dark" type="submit" className='btnButtons'>Add</Button>
+                    <h5 style={{marginTop:'10%', 
+                                fontStyle: 'italic', 
+                                display: this.state.bool ? 'block' : 'none'}}>
+                                {this.state.categoria} has been added to the categories!
+                    </h5>
                 </form>
             </div>
       )

@@ -2,40 +2,45 @@ import React from 'react';
 import axios from 'axios';
 import { UncontrolledAlert } from 'reactstrap';
 import { Button } from 'reactstrap';
-import FlashMessage from 'react-flash-message'
 
 export default class InsertProduct extends React.Component {
   state = {
       descricao: '',
-      id_categoria: ''
+      id_categoria: '',
+      bool: false
   }
-
-  Message = () => (
-    <FlashMessage duration={5000}>
-      <strong>I will disapper in 5 seconds!</strong>
-    </FlashMessage>
-  )
   
   handleChange = event => {
     
     const { name, value }  = event.target;
-
+    console.log(this.state)
     this.setState(previousValue => {
         if (name === 'descricao'){
             return {
                 descricao: value,
-                id_categoria: previousValue.id_categoria
+                id_categoria: previousValue.id_categoria,
+                bool: false
             }
         } else if (name === 'id_categoria'){
             return {
                 descricao: previousValue.descricao,
-                id_categoria: value
+                id_categoria: value,
+                bool: false
             }
         }
     })
   }
 
   handleSubmit = event => {
+    this.setState(prevValue => {
+        return {
+            descricao: prevValue.descricao,
+            id_categoria: prevValue.id_categoria,
+            bool: true
+        }
+    })
+    console.log(this.state)
+
     event.preventDefault()
     const newProduct = {
         descricao: this.state.descricao,
@@ -49,8 +54,7 @@ export default class InsertProduct extends React.Component {
                     console.log(res)
                     console.log(res.data)
                 }) 
-                
-    }
+        }
     
 
   render() {
@@ -66,7 +70,12 @@ export default class InsertProduct extends React.Component {
                     <input placeholder="Product Category" type='text' name='id_categoria' onChange={this.handleChange} />
                     </label>
                     <br />
-                    <Button color="dark" type="submit" className='btnButtons'>Add</Button>                    
+                    <Button color="dark" type="submit" className='btnButtons'>Add</Button>
+                    <h5 style={{marginTop:'10%', 
+                                fontStyle: 'italic', 
+                                display: this.state.bool ? 'block' : 'none'}}>
+                                {this.state.descricao} has been added to the products!
+                    </h5>                    
                 </form>
             </div>
       )

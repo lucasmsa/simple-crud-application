@@ -39,7 +39,7 @@ export default function App() {
 
   return (
     <Router >
-      <div class='full-height' style={{paddingBottom: '20%'}}>
+      <div class='full-height' style={{paddingBottom: '10%'}}>
         <Navbar color="dark" dark expand='md'>
           <NavbarBrand to='/'>Products</NavbarBrand>
           <NavbarToggler onClick={toggle} />
