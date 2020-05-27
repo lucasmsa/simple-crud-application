@@ -1,10 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 import ItemsProducts from '../items/ItemsProducts';
+import Product from './Product'
 
 export default class ProductsList extends React.Component {
     state = {
-      products: []
+      products: [],
+      bool: false
     }
 
     deleteItem = id => {
@@ -15,16 +17,15 @@ export default class ProductsList extends React.Component {
           window.location.reload(false);
         })
     }
-
-    getProductInfo = id => {
-      console.log(id)
-    }
   
     componentDidMount() {
       axios.get(`http://localhost:5000/products`)
         .then(res => {
           const products = res.data;
-          this.setState({ products });
+          this.setState({ 
+            products: products, 
+            bool: false
+          });
         })
     }
   
@@ -38,7 +39,6 @@ export default class ProductsList extends React.Component {
                           descricao={product.descricao}
                           id_categoria={product.id_categoria}
                           onDelete={this.deleteItem}
-                          onProduct={this.getProductInfo}
                           />)}
         </ul>
       )

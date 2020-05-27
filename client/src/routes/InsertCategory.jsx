@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { UncontrolledAlert, Button } from 'reactstrap';
+import LightSpeed from 'react-reveal/LightSpeed';
 
 export default class InsertCategory extends React.Component {
   state = {
@@ -51,12 +52,15 @@ export default class InsertCategory extends React.Component {
                     <input placeholder='Category name' type='text' name='categoria' onChange={this.handleChange} />
                     </label>
                     <br />
-                    <Button color="dark" type="submit" className='btnButtons'>Add</Button>
+                    
+                    <Button color="dark" type="submit" className='btnButtons'>Add</Button>  
+                    <LightSpeed left>
                     <h5 style={{marginTop:'10%', 
                                 fontStyle: 'italic', 
                                 display: this.state.bool ? 'block' : 'none'}}>
                                 {this.state.categoria} has been added to the categories!
                     </h5>
+                    </LightSpeed>
                 </form>
             </div>
       )

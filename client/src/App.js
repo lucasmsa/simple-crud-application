@@ -4,7 +4,8 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
+    Link,
+    Redirect
 } from "react-router-dom";
 
 import {
@@ -35,11 +36,18 @@ export default function App() {
 
   const toggle = () => setIsOpen(!isOpen);
 
+  const handleReload = () => {
+    setTimeout(function() { 
+      window.location.reload(false)
+    }.bind(this), 1)
+  }
+
   return (
     <Router >
       <div class='full-height' style={{paddingBottom: '10%'}}>
         <Navbar color="dark" dark expand='md'>
-          <NavbarBrand to='/products'><NavLink><Link to="/products" style={{color: 'white'}}>Products</Link></NavLink></NavbarBrand>
+          <NavbarBrand to='/products'><NavLink><Link onClick={handleReload} to="/products" 
+                       style={{color: 'white'}} className="brand">Products</Link></NavLink></NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar></Collapse>
             <Nav className="mr-auto" navbar>
@@ -52,10 +60,10 @@ export default function App() {
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem>
-                  <NavLink><Link to="/insertProduct" style={{color: 'black'}}>Products</Link></NavLink>
+                  <Link to='/insertProduct'><NavLink><h6 style={{color: '#485159'}}>Products</h6></NavLink></Link>
                 </DropdownItem>
                 <DropdownItem>
-                  <NavLink><Link to="/insertCategory" style={{color: 'black'}}>Categories</Link></NavLink>
+                  <Link to='/insertCategory'><NavLink><h6 style={{color: '#485159'}}>Categories</h6></NavLink></Link>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
@@ -65,6 +73,9 @@ export default function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
+        <Route exact path="/">
+            <Redirect to="/products" />
+          </Route>
           <Route path="/insertProduct">
             <InsertProduct />
           </Route>

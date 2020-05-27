@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { UncontrolledAlert } from 'reactstrap';
 import { Button } from 'reactstrap';
+import LightSpeed from 'react-reveal/LightSpeed';
 
 export default class InsertProduct extends React.Component {
   state = {
@@ -71,11 +72,13 @@ export default class InsertProduct extends React.Component {
                     </label>
                     <br />
                     <Button color="dark" type="submit" className='btnButtons'>Add</Button>
+                <LightSpeed left>
                     <h5 style={{marginTop:'10%', 
                                 fontStyle: 'italic', 
                                 display: this.state.bool ? 'block' : 'none'}}>
                                 {this.state.descricao} has been added to the products!
-                    </h5>                    
+                    </h5>   
+                </LightSpeed>            
                 </form>
             </div>
       )

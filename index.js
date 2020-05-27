@@ -29,7 +29,6 @@ app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    //res.setHeader('Access-Control-Allow-Credentials', true);
     next();
 });
 
@@ -240,27 +239,33 @@ app.delete('/deleteCategory/:category_id', (req, res) => {
     })
 })
 
-
+// Getting all products from a certain category
 app.get('/productsInCategory/:category_id', (req, res) => {
+
     const find_products = `SELECT * FROM Product WHERE id_categoria == ${req.params.category_id}`
     db.all(find_products, [], (err, result) => {
         if (err){
             return console.error(err.message)
         } else {
-            const category_description = `SELECT * FROM Category WHERE id == ${result[0].id_categoria}`
-            db.all(category_description, [], (err, result_category) => {
-                if(err){
-                    return console.error(err.message)
-                } else {
-                    const category_id = result[0].id_categoria
-                    result[0].id_categoria = result_category
-                    res.json(result)
-                }
-            })
-            
+            if(result.length){
+                const category_description = `SELECT * FROM Category WHERE id == ${result[0].id_categoria}`
+                db.all(category_description, [], (err, result_category) => {
+                    if(err){
+                        return console.error(err.message)
+                    } else {
+                        const category_id = result[0].id_categoria
+                        result[0].id_categoria = result_category
+                        res.json(result)
+                    }
+                })
+            } else {
+                noProducts = [{
+                    descricao: 'No products in this category'
+                }]
+                res.json(noProducts)
+            }
         }
     })
-
 })
 
 const port = process.env.PORT || 5000

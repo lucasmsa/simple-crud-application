@@ -9,6 +9,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Fade from 'react-reveal/Fade';
+
 
 export default class CategoriesList extends React.Component {
     state = {
@@ -23,14 +25,6 @@ export default class CategoriesList extends React.Component {
             window.location.reload(false);
         })
     }
-
-    getCategoryInfo = id => {
-        axios.get('http://localhost:5000/categories/'+id)
-          .then(res => {
-            const category = res.data
-            console.log(category)
-          })
-    }
   
     componentDidMount() {
       axios.get(`http://localhost:5000/categories`)
@@ -42,7 +36,9 @@ export default class CategoriesList extends React.Component {
   
     render() {
       return (
+        
         <ul className='lists'>
+          
           { this.state.categories.map(
                 category => <ItemsCategories
                                 key={category.id}

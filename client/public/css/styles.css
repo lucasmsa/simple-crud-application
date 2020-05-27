@@ -6,6 +6,12 @@ body {
     background-color: #9BADBF;
 }
 
+.brand {
+    font-family: 'Varela Round', sans-serif;
+    font-weight: bold;
+    /*font-size: 10rem*/
+}
+
 div {
     background-color: #9BADBF;
     color: #485159;   
@@ -18,7 +24,6 @@ div {
 .full-height {
     height: 100%;
 }
-
 
 h1 {
     color: '#485159';

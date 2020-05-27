@@ -1,47 +1,67 @@
-import React from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, BrowserRouter as Router, Route, Switch  } from 'react-router-dom';
 import DeleteOutlineSharpIcon from '@material-ui/icons/DeleteOutlineSharp';
 import EditIcon from '@material-ui/icons/Edit';
+import Product from '../routes/Product'
+import Fade from 'react-reveal/Fade';
+
 
 function ItemsProducts(props) {
 
+    const [state, setState] = useState(false)
+    
     function handleClick(){
         props.onDelete(props.id)
     }
 
-    function handleProduct(){
-        props.onProduct(props.id)
+    function handleRoute(){
+        setState(!state)
     }
 
+    const id = props.id
+    
     return (
+        
         <div className="items">
-        <hr 
-                color='rgba(93,104,115,0.2)'
-                width="35%"
-                opacity="40%"
-            />
-          <h5><Link className="textNames" style={{color: "#485159"}} onClick={handleProduct}>{props.descricao}</Link> [{props.id_categoria}]
-            <Link>
-            <DeleteOutlineSharpIcon 
-                className='delete' 
-                style={{fill: "#B03432"}}
-                onClick={handleClick}
-            />
-            </Link>
-            <Link>
-            <EditIcon   
-                style={{fill: "#4F70B3"}}
-                onClick=""
-            />
-            </Link>
-            </h5>  
-            
+        <Router>
+            <Fade left>
             <hr 
-                color='rgba(93,104,115,0.2)'
+                color='black'
                 width="35%"
-                opacity="40%"
+                />
+            <h5><Link to='/seeProducts' 
+                      className="textNames" 
+                      style={{color: "#485159"}}
+                      onClick={handleRoute}>{props.descricao}</Link> [{props.id_categoria}]
+                <Link>
+                <DeleteOutlineSharpIcon 
+                    className='delete' 
+                    style={{fill: "#B03432"}}
+                    onClick={handleClick}
+                />
+                </Link>
+                <Link>
+                <EditIcon   
+                    style={{fill: "#4F70B3"}}
+                    onClick=""
+                />
+                </Link>
+                </h5>  
+                
+                <hr 
+                    color='black'
+                    width="35%"
+                />
+            </Fade>
+            <Switch>
+            <Route 
+                exact path="/seeProducts"
+                render={(props) => <Product id={id} 
+                                            show={state}/>}
             />
+            </Switch>
+            </Router>
         </div>
       );
 }
