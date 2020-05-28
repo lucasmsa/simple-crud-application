@@ -4,9 +4,7 @@ Answer to ledger full-stack node developer challenge, the pdf with the test is i
 ```
 git clone https://github.com/lucasmsa/Ledger-Challenge.git
 ```
-```
-npm install 
-```
-```
-node app.js
-```
+
+* #### On the project folder run ``npm install`` then ``cd client`` to go to the react app folder, and run ``npm install`` again.
+* #### Now open 2 terminals, first run ``nodemon index.js`` [ main folder ] and in the other terminal go to the client folder and run ``yarn start`` 
+
