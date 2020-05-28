@@ -48,11 +48,11 @@ export default class UpdateProduct extends React.Component {
         
         event.preventDefault()
         const newProduct = {
-            descricao: this.state.descricao,
-            id_categoria: this.state.id_categoria
+            product_desc: this.state.descricao,
+            category_id: this.state.id_categoria
         }    
-  
-        axios.put('http://localhost:5000/updateProduct/'+this.props.id, 
+        console.log(newProduct, this.props.id)
+        axios.put('http://localhost:5000/updateproduct/'+this.props.id, 
                 { newProduct },
                 {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
 

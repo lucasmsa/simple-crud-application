@@ -36,7 +36,7 @@ export default class UpdateCategory extends React.Component {
           categoria: this.state.categoria
       }    
   
-      axios.put('http://localhost:5000/updateCategory/'+this.props.id, 
+      axios.put('http://localhost:5000/updatecategory/'+this.props.id, 
                   { newCategory },
                   {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
 

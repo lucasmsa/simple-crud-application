@@ -118,8 +118,9 @@ app.route('/updateProduct/:product_id')
         let stringfiedReq = req.body
         let stringToParse = Object.keys(stringfiedReq)[0]
         let product = JSON.parse(stringToParse).newProduct
+        console.log(product)
 
-        const update_list = [product.descricao, product.id_categoria, req.params.product_id]
+        const update_list = [product.product_desc, product.category_id, req.params.product_id]
         const update_sql = `UPDATE Product SET descricao = ?, id_categoria = ? WHERE (id = ?)`
         db.run(update_sql, update_list, (err, result) => {
             if(err) {
