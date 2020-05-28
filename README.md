@@ -6,5 +6,5 @@ git clone https://github.com/lucasmsa/Ledger-Challenge.git
 ```
 
 * #### On the project folder run ``npm install`` then ``cd client`` to go to the react app folder, and run ``npm install`` again.
-* #### Now open 2 terminals, first run ``nodemon index.js`` [ main folder ] and in the other terminal go to the client folder and run ``yarn start`` 
+* #### Now open 2 terminals, first run ``nodemon index.js`` on the main folder and in the other terminal go to the client folder and run ``yarn start`` 
 
