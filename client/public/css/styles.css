@@ -12,7 +12,14 @@ body {
     /*font-size: 10rem*/
 }
 
+.update {
+    margin-top: -4%;
+    margin-bottom: -5%;
+}
+
 div {
+    
+    /* background-color: #A3B7C7; */
     background-color: #9BADBF;
     color: #485159;   
 }

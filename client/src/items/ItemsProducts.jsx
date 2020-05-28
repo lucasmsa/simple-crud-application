@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
-import axios from 'axios';
 import { Link, BrowserRouter as Router, Route, Switch  } from 'react-router-dom';
 import DeleteOutlineSharpIcon from '@material-ui/icons/DeleteOutlineSharp';
 import EditIcon from '@material-ui/icons/Edit';
-import Product from '../routes/Product'
+import Product from '../components/Product'
 import Fade from 'react-reveal/Fade';
 
 

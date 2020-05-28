@@ -1,27 +1,27 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { Link, BrowserRouter as Router, Route, Switch  } from 'react-router-dom';
 import DeleteOutlineSharpIcon from '@material-ui/icons/DeleteOutlineSharp';
 import EditIcon from '@material-ui/icons/Edit';
 import Fade from 'react-reveal/Fade';
-import Category from '../routes/Category'
+import Category from '../components/Category'
+import {Capitalize} from 'react-lodash'
+import UpdateCategory from '../components/UpdateCategory'
 
 
-function ItemsCategories(props) {
+export default function ItemsCategories(props) {
 
     const [state, setState] = useState(false)
+    const [update, setUpdate] = useState(false)
 
     function handleClick(){
         props.onDelete(props.id)
     }
-
-    function handleCategory(){
-        setState(!state)
-    }
-
+    
     const category_id = props.id;
+    const category = props.categoria;
 
     return (
+        
         <div className="items">
         <Router>
         <Fade left>
@@ -32,8 +32,9 @@ function ItemsCategories(props) {
           <h5><Link to={'/productsPerCategory'} 
                     className="textNames" 
                     style={{color: "#485159"}} 
-                    onClick={handleCategory}>
-                    {props.categoria}
+                    onClick={() => setState(!state)}
+                    >
+                    <Capitalize string={category} />
                     </Link> 
                     [{props.id}]
             <Link>
@@ -43,10 +44,13 @@ function ItemsCategories(props) {
                 onClick={handleClick}
             />
             </Link>
-            <Link>
+            <Link 
+                to={'/updateCategory'}
+                onClick={() => setUpdate(!update)}
+                name='edit'    
+            >
             <EditIcon   
                 style={{fill: "#4F70B3"}}
-                onClick=""
             />
             </Link>
             </h5>
@@ -57,15 +61,20 @@ function ItemsCategories(props) {
             />
             </Fade>
             <Switch>
-            <Route 
-                exact path="/productsPerCategory"
-                render={(props) => <Category id={category_id} 
-                                             show={state}/>}
-            />
+                <Route 
+                    exact path="/productsPerCategory"
+                    render={(props) => <Category id={category_id} 
+                                                 show={state}/>}
+                />
+                <Route
+                    exact path="/updateCategory"
+                    render={(props) => <UpdateCategory id={category_id} 
+                                                       show={update}
+                                                       categoria={category}     
+                                                       />}
+                />
             </Switch>
         </Router>
         </div>
       );
 }
-
-export default ItemsCategories;

@@ -15,6 +15,7 @@
     "react-flash-message": "^1.0.2",
     "react-lodash": "^0.1.2",
     "react-reveal": "^1.2.2",
+    "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "reactstrap": "^8.4.1"
@@ -39,5 +40,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "case-sensitive-paths-webpack-plugin": "^2.3.0"
   }
 }

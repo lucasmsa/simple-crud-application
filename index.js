@@ -114,8 +114,12 @@ app.route('/updateProduct/:product_id')
                 }
             )
         })
-    .post((req, res) => {
-        const update_list = [req.body.product_desc, req.body.category_id, req.params.product_id]
+    .put((req, res) => {
+        let stringfiedReq = req.body
+        let stringToParse = Object.keys(stringfiedReq)[0]
+        let product = JSON.parse(stringToParse).newProduct
+
+        const update_list = [product.descricao, product.id_categoria, req.params.product_id]
         const update_sql = `UPDATE Product SET descricao = ?, id_categoria = ? WHERE (id = ?)`
         db.run(update_sql, update_list, (err, result) => {
             if(err) {
@@ -174,12 +178,9 @@ app.route('/insertCategory')
         res.render('insert')
     })
     .post((req, res) => {
-        console.log(req.body)
         let stringfiedReq = req.body
         let stringToParse = Object.keys(stringfiedReq)
-        console.log(stringToParse)
         let product = JSON.parse(stringToParse).newCategory
-        console.log(product)
 
         insert_sql = `INSERT INTO Category (categoria) VALUES (?)`
         new_product = [product.categoria]
@@ -213,8 +214,14 @@ app.route('/updateCategory/:category_id')
             )
         })
     .put((req, res) => {
+
+        let stringfiedReq = req.body
+        let stringToParse = Object.keys(stringfiedReq)
+        let product = JSON.parse(stringToParse).newCategory
+
         const update_sql = `UPDATE Category SET categoria = ? WHERE (id = ?)`
-        const update_list = [req.body.categoria]
+        const update_list = [product.categoria, req.params.category_id]
+
         db.run(update_sql, update_list, (err, result) => {
             if(err) {
                 return console.error(err.message)

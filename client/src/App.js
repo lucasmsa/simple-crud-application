@@ -19,14 +19,13 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem,
-  NavbarText
+  DropdownItem
 } from 'reactstrap';
 
-import InsertProduct from './routes/InsertProduct';
-import InsertCategory from './routes/InsertCategory';
-import ProductsList from './routes/All_Products';
-import CategoriesList from './routes/All_Categories'
+import InsertProduct from './components/InsertProduct';
+import InsertCategory from './components/InsertCategory';
+import ProductsList from './components/All_Products';
+import CategoriesList from './components/All_Categories'
 
 
 
@@ -52,7 +51,7 @@ export default function App() {
           <Collapse isOpen={isOpen} navbar></Collapse>
             <Nav className="mr-auto" navbar>
             <NavItem>
-              <NavLink><Link to="/categories" style={{color: 'white'}}>Categories</Link></NavLink>
+              <NavLink><Link to="/categories" style={{color: 'white'}}  onClick={handleReload}>Categories</Link></NavLink>
             </NavItem>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>

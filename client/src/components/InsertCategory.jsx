@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { UncontrolledAlert, Button } from 'reactstrap';
+import { Button } from 'reactstrap';
 import LightSpeed from 'react-reveal/LightSpeed';
 
 export default class InsertCategory extends React.Component {
@@ -41,7 +41,6 @@ export default class InsertCategory extends React.Component {
                 }) 
                 
     }
-    
 
   render() {
       return (

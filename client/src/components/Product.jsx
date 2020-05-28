@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import { Jumbotron } from 'reactstrap';
 import { Capitalize } from 'react-lodash';
 import Fade from 'react-reveal/Fade';
 

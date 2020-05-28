@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import { Capitalize } from 'react-lodash';
 import Fade from 'react-reveal/Fade';
 import ProductsInCategory from '../items/ProductsInCategory';
 
@@ -23,8 +22,6 @@ export default class Category extends React.Component {
     }
   
     render() {
-    
-      let category = this.state.categoria
       let showDiv = this.props.show
       console.log(this.state.products)
       return (

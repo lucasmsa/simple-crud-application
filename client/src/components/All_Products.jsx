@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import ItemsProducts from '../items/ItemsProducts';
-import Product from './Product'
 
 export default class ProductsList extends React.Component {
     state = {

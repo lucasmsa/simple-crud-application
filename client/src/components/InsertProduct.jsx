@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import { UncontrolledAlert } from 'reactstrap';
 import { Button } from 'reactstrap';
 import LightSpeed from 'react-reveal/LightSpeed';
 
