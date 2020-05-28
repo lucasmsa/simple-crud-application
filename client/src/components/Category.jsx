@@ -23,7 +23,7 @@ export default class Category extends React.Component {
   
     render() {
       let showDiv = this.props.show
-      console.log(this.state.products)
+      
       return (
             <Fade>
                 <div style={{ display: showDiv ? 'block' : 'none'}}>

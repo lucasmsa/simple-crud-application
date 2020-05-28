@@ -11,8 +11,7 @@ export default class ProductsList extends React.Component {
     deleteItem = id => {
       axios.delete('http://localhost:5000/deleteProduct/' + id)
         .then(res => {
-          console.log(res)
-          console.log(res.data)
+          window.history.replaceState('', '', '/products')
           window.location.reload(false);
         })
     }
@@ -29,6 +28,7 @@ export default class ProductsList extends React.Component {
     }
   
     render() {
+      
       return (
         <ul className='lists'>
           { this.state.products.map(

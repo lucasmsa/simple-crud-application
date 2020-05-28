@@ -30,6 +30,7 @@ export default class Product extends React.Component {
                 <div className='itemInfo' style={{ display: showDiv ? 'block' : 'none'}}>
                     <h5 style={{color: '#485159'}}>Category: <Capitalize string={category} /></h5>
                     <h5 style={{color: '#5D6873'}}>ID: {this.state.id}</h5>
+                    {window.history.replaceState('', '', '/products')}
                 </div>
             </Fade>
       )

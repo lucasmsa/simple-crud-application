@@ -12,10 +12,6 @@ export default function ItemsCategories(props) {
 
     const [state, setState] = useState(false)
     const [update, setUpdate] = useState(false)
-
-    function handleClick(){
-        props.onDelete(props.id)
-    }
     
     const category_id = props.id;
     const category = props.categoria;
@@ -41,13 +37,12 @@ export default function ItemsCategories(props) {
             <DeleteOutlineSharpIcon 
                 className='delete' 
                 style={{fill: "#B03432"}}
-                onClick={handleClick}
+                onClick={() => props.onDelete(props.id)}
             />
             </Link>
             <Link 
                 to={'/updateCategory'}
                 onClick={() => setUpdate(!update)}
-                name='edit'    
             >
             <EditIcon   
                 style={{fill: "#4F70B3"}}
@@ -61,6 +56,7 @@ export default function ItemsCategories(props) {
             />
             </Fade>
             <Switch>
+                
                 <Route 
                     exact path="/productsPerCategory"
                     render={(props) => <Category id={category_id} 

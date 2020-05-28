@@ -10,6 +10,7 @@ export default class CategoriesList extends React.Component {
     deleteItem = id => {
         axios.delete('http://localhost:5000/deleteCategory/' + id)
           .then(res => {
+            window.history.replaceState('', '', '/categories')
             window.location.reload(false);
         })
     }
@@ -23,7 +24,7 @@ export default class CategoriesList extends React.Component {
     }
   
     render() {
-    
+      
       return (
         
         <ul className='lists'>

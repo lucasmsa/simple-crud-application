@@ -39,8 +39,7 @@ export default class InsertProduct extends React.Component {
             bool: true
         }
     })
-    console.log(this.state)
-
+    
     event.preventDefault()
     const newProduct = {
         descricao: this.state.descricao,

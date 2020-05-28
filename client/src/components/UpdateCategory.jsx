@@ -62,7 +62,9 @@ export default class UpdateCategory extends React.Component {
         }
 
         return (
+            
             <Zoom>
+            
               <div className='update' style={{display: showUpdate ? 'block' : 'none'}}>
                   <form onSubmit={this.handleSubmit} className='insertion'>
                       <label>
@@ -76,7 +78,7 @@ export default class UpdateCategory extends React.Component {
                               type="submit" 
                               className='btnButtons'
                               style={{
-                                  width: '12.5%', 
+                                  width: '8%', 
                                   marginBottom: '4.5%'
                                 }}  
                             >
@@ -91,6 +93,7 @@ export default class UpdateCategory extends React.Component {
                       </h5>
                       </LightSpeed>
                   </form>
+                  {window.history.replaceState('', '', '/categories')}
               </div>
             </Zoom>
         )

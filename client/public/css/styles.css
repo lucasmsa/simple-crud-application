@@ -3,7 +3,8 @@ html, body, #app, #app>div {
 }
 
 body {
-    background-color: #9BADBF;
+    background-color: #B8CDE3;
+    font-family: 'Rubik', sans-serif;
 }
 
 .brand {
@@ -19,8 +20,7 @@ body {
 
 div {
     
-    /* background-color: #A3B7C7; */
-    background-color: #9BADBF;
+    background-color: #B8CDE3; 
     color: #485159;   
 }
 
@@ -48,10 +48,7 @@ h5 {
     padding: 1.5%;
 }
 
-body {
-    font-family: 'Rubik', sans-serif;
-    background-color: #50a3a2;
-}
+
 .items {
     margin-top: 3.5%;
     margin-bottom: 2%;
