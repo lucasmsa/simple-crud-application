@@ -4,17 +4,14 @@ const http = require('http')
 const ejs = require('ejs')
 var DataTypes = require('sequelize/lib/data-types')
 const sqlite3 = require('sqlite3')
-const { open } = require('sqlite')
-const { ApolloServer } = require('apollo-server-express');
-const Sequelize = require('sequelize')
-const path = require('path')
+var router = express.Router()
 
 const app = express()
 const db = new sqlite3.Database('./database/products.db', sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE, err => {
     if (err) {
         console.error(err.message)
     } else {
-        console.error('Successfully connected to SQLite products db')
+        console.log('Successfully connected to SQLite products db')
     }
 });
 
@@ -75,7 +72,6 @@ app.get('/products/:product_id', (req, res) => {
 // Insert a product, with category ID and its description
 app.route('/insertProduct') 
     .get((req, res) => {
-        console.log(req.body)
         res.render('insert')
     })
     .post((req, res) => {
@@ -118,7 +114,6 @@ app.route('/updateProduct/:product_id')
         let stringfiedReq = req.body
         let stringToParse = Object.keys(stringfiedReq)[0]
         let product = JSON.parse(stringToParse).newProduct
-        console.log(product)
 
         const update_list = [product.product_desc, product.category_id, req.params.product_id]
         const update_sql = `UPDATE Product SET descricao = ?, id_categoria = ? WHERE (id = ?)`
@@ -140,7 +135,6 @@ app.delete('/deleteProduct/:product_id', (req, res) => {
         if(err) {
             return console.error(err.message)
         } else {
-            console.log('Product deleted successfully')
             res.send('Deleted product with id: ' + id_delete)
         }
     })
@@ -227,7 +221,6 @@ app.route('/updateCategory/:category_id')
             if(err) {
                 return console.error(err.message)
             } else {
-                console.log(result)
                 res.redirect('/categories/'+req.params.category_id)
             }
         })
@@ -241,7 +234,6 @@ app.delete('/deleteCategory/:category_id', (req, res) => {
         if(err) {
             return console.error(err.message)
         } else {
-            console.log('Category deleted successfully')
             res.send('Deleted category with id: ' + id_delete)
         }
     })
@@ -276,8 +268,10 @@ app.get('/productsInCategory/:category_id', (req, res) => {
     })
 })
 
-const port = process.env.PORT || 5000
-app.listen(port, () => {
+const port = 5000
+const server = app.listen(port, () => {
   console.log('Server listening on port ' + port)
 })
+
+module.exports = { server, db }
 

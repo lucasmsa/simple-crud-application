@@ -1,0 +1,565 @@
+{
+	"info": {
+		"_postman_id": "603e57bf-347c-4cab-9936-d95fdf9a5dc1",
+		"name": "Products",
+		"description": "- Crie uma Collection no Postman com 5 requisições, sendo uma para cada rota \n- Exporte a Collection, de preferência na versão 2.1, e salve o arquivo no diretório  do projeto Node com o nome Product.postman_collection.json\n\n\n\n -> Resposta equivalente a essa parte do desafio da questão 2, para tanto foi utilizado a versão do cógido contida no hash [abf943dc3a4bd2e99114c3b8823ed70054b8f977] do repositório do github",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Display all products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/products",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"products"
+					]
+				},
+				"description": "Showing all products in a JSON format"
+			},
+			"response": [
+				{
+					"name": "Display all products",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/products",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "246"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"f6-45tnu5TqvE+9xw8xvxI/CeeARPs\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 28 May 2020 18:24:17 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 0,\n        \"id_categoria\": 1,\n        \"descricao\": \"Sushi\"\n    },\n    {\n        \"id\": 1,\n        \"id_categoria\": 2,\n        \"descricao\": \"Matrix\"\n    },\n    {\n        \"id\": 2,\n        \"id_categoria\": 0,\n        \"descricao\": \"Sapiens\"\n    },\n    {\n        \"id\": 5,\n        \"id_categoria\": 1,\n        \"descricao\": \"Pudim\"\n    },\n    {\n        \"id\": 6,\n        \"id_categoria\": 2,\n        \"descricao\": \"Janela indiscreta\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Display specific product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				},
+				"description": "Display a product based on its ID"
+			},
+			"response": [
+				{
+					"name": "Display specific product",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/products/5",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"products",
+								"5"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "77"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4d-SjQifIAgXO1qcBrTA2Idd/e2Pkc\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 28 May 2020 18:25:48 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 5,\n        \"id_categoria\": [\n            {\n                \"id\": 1,\n                \"categoria\": \"comida\"\n            }\n        ],\n        \"descricao\": \"Pudim\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Inserting a product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				},
+				"description": "Inserting a product with its description and category ID"
+			},
+			"response": [
+				{
+					"name": "post request, successfully inserting the product",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "product_desc",
+									"value": "Picanha",
+									"type": "text"
+								},
+								{
+									"key": "category_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/insert",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"insert"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "294"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"126-6xQiT7nb8xkb8rLOGpRaNgXiiew\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 28 May 2020 18:29:59 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 0,\n        \"id_categoria\": 1,\n        \"descricao\": \"Sushi\"\n    },\n    {\n        \"id\": 1,\n        \"id_categoria\": 2,\n        \"descricao\": \"Matrix\"\n    },\n    {\n        \"id\": 2,\n        \"id_categoria\": 0,\n        \"descricao\": \"Sapiens\"\n    },\n    {\n        \"id\": 5,\n        \"id_categoria\": 1,\n        \"descricao\": \"Pudim\"\n    },\n    {\n        \"id\": 6,\n        \"id_categoria\": 2,\n        \"descricao\": \"Janela indiscreta\"\n    },\n    {\n        \"id\": 7,\n        \"id_categoria\": 1,\n        \"descricao\": \"Picanha\"\n    }\n]"
+				},
+				{
+					"name": "Insert get request loading an EJS page",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "product_desc",
+									"value": "Picanha",
+									"type": "text"
+								},
+								{
+									"key": "category_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/insert",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"insert"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "762"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2fa-CDA/RNRXZs+53P2vyPFAR+UJqSE\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 28 May 2020 18:27:32 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"UTF-8\">\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n        <link href=\"https://fonts.googleapis.com/css2?family=Fira+Code&family=Montserrat:ital,wght@1,300&display=swap\" rel=\"stylesheet\">\n        <link href=\"/css/styles.css\" rel=\"stylesheet\" type=\"text/css\">\n        <title>Insert</title>\n    </head>\n    <body>\n        <h1>Insert new products</h1>\n        <hr>\n        <form action=\"/insert\" method=\"POST\">\n            <h4>Product Description</h4>\n            <input name='product_desc'/>\n            <br>\n            <h4>Category ID</h4>\n            <input name='category_id' />\n            <br>\n            <div class=\"button-wrapper\">\n                <button type=\"submit\">Submit</button>\n            </div>\n        </form>\n    </body>\n</html>"
+				}
+			]
+		},
+		{
+			"name": "Updating a product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				},
+				"description": "Updating a product, setting a new category ID and description"
+			},
+			"response": [
+				{
+					"name": "update a product get request, displaying an EJS page",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/update/2",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"update",
+								"2"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "855"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"357-2WWwZizN+zmIc9X3oYX38U8j1EI\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 28 May 2020 18:32:55 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "<!DOCTYPE html>\n<html lang=\"en\">\n    <head>\n        <meta charset=\"UTF-8\">\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n        <link href=\"https://fonts.googleapis.com/css2?family=Fira+Code&family=Montserrat:ital,wght@1,300&display=swap\" rel=\"stylesheet\">\n        <link href=\"/css/styles.css\" rel=\"stylesheet\" type=\"text/css\">\n        <title>Update</title>\n    </head>\n    <body>\n        <h1>Update Sapiens Product [Category ID - 0]</h1>\n        <hr style=\"margin-bottom: 30px; width: 50%;\">\n        <form action=\"/update/2\" method=\"POST\">\n            <input type=\"text\" name=\"product_desc\" placeholder='Product Name'>\n            <br>\n            <input type=\"text\" name=\"category_id\" placeholder='Product category ID'>\n            <div class=\"button-wrapper\">\n                <button style=\"margin-top: 25px;\" type=\"submit\">Submit</button>\n            </div>\n        </form>\n    </body>\n</html>"
+				},
+				{
+					"name": "Update product put request. Isolating the newly updated product",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "product_desc",
+									"value": "1984",
+									"type": "text"
+								},
+								{
+									"key": "category_id",
+									"value": "0",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:5000/update/2",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"update",
+								"2"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "75"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4b-tuAplirtdISCqe0K3UsipUNzoUM\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 28 May 2020 18:34:32 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 2,\n        \"id_categoria\": [\n            {\n                \"id\": 0,\n                \"categoria\": \"livro\"\n            }\n        ],\n        \"descricao\": \"1984\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Deleting a product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				},
+				"description": "Deleting a product based on its ID"
+			},
+			"response": [
+				{
+					"name": "Delete request for product with id 6",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/delete/6",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"delete",
+								"6"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "26"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1a-ssc/iG2WrtE2jKFeqUNCpLE8V5A\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 28 May 2020 18:38:25 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "Deleted product with id: 6"
+				},
+				{
+					"name": "First displaying all products to check wich ID will be deleted",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/products",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "291"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"123-gkT/VHAGIjhCBFko9mnKc/taiRA\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 28 May 2020 18:37:16 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 0,\n        \"id_categoria\": 1,\n        \"descricao\": \"Sushi\"\n    },\n    {\n        \"id\": 1,\n        \"id_categoria\": 2,\n        \"descricao\": \"Matrix\"\n    },\n    {\n        \"id\": 2,\n        \"id_categoria\": 0,\n        \"descricao\": \"1984\"\n    },\n    {\n        \"id\": 5,\n        \"id_categoria\": 1,\n        \"descricao\": \"Pudim\"\n    },\n    {\n        \"id\": 6,\n        \"id_categoria\": 2,\n        \"descricao\": \"Janela indiscreta\"\n    },\n    {\n        \"id\": 7,\n        \"id_categoria\": 1,\n        \"descricao\": \"Picanha\"\n    }\n]"
+				},
+				{
+					"name": "New get request to product to check if the product was deleted",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "233"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"e9-PK0ymw6LEkOt9109LGmPzUw8rD8\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 28 May 2020 18:39:19 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 0,\n        \"id_categoria\": 1,\n        \"descricao\": \"Sushi\"\n    },\n    {\n        \"id\": 1,\n        \"id_categoria\": 2,\n        \"descricao\": \"Matrix\"\n    },\n    {\n        \"id\": 2,\n        \"id_categoria\": 0,\n        \"descricao\": \"1984\"\n    },\n    {\n        \"id\": 5,\n        \"id_categoria\": 1,\n        \"descricao\": \"Pudim\"\n    },\n    {\n        \"id\": 7,\n        \"id_categoria\": 1,\n        \"descricao\": \"Picanha\"\n    }\n]"
+				}
+			]
+		}
+	],
+	"protocolProfileBehavior": {}
+}
