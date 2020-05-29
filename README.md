@@ -7,7 +7,7 @@ git clone https://github.com/lucasmsa/Ledger-Challenge.git
 ```
 
 * #### On the project folder run ``npm install`` then ``cd client`` to go to the react app folder, and run ``npm install`` again.
----
+
 ## Running Tests with Jest 🧪
 * Go to the main project and run:
 ```
@@ -18,6 +18,7 @@ npm run test
 ![Jest results](http://g.recordit.co/pP1L8gXe7q.gif)
 ##### *Don't run tests while the app is on*
 
+---
 
 ## Migrations 
 * If the ``products.db`` file inside the ``database/`` folder gets deleted it is possible to populate a new database through the use of the command: 
