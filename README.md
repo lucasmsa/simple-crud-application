@@ -1,8 +1,6 @@
 # LedgerTec Internship Test - [ 2º Profile ]
 > Answer to ledger full-stack node developer challenge, the pdf with the test is inside the Challenge description folder. The first part of the challenge consists in making a RESTFul application using NodeJS and SQLite to store the data. The second part includes adding a ReactJS front-end to the previous Node project
 
----
-
 ## Installation ⚙️
 ```
 git clone https://github.com/lucasmsa/Ledger-Challenge.git
@@ -38,17 +36,19 @@ npm run test
 ## CRUD Operations
 * ### Create
 > ![Create results](http://g.recordit.co/oKt1DPDPPJ.gif)
+---
 * ### Read
    * The number close to the product corresponds to its category ID. The number close to the category is its ID, when adding    new products just put the same number as the one displayed in the category you want to insert it
    <br>
 > ![Read results](https://i.imgur.com/WI4cHy0.png)
 > ![Read results](https://i.imgur.com/z9ZXRix.png)
-
+---
 * ### Update
 > ![Update results](http://g.recordit.co/r1GCIpZQZO.gif)
+---
 * ### Delete
 > ![Delete results](http://g.recordit.co/QHhoXdvPHE.gif)
-
+---
 #### *Those behaviours can also be seen in the categories section*
 
 
