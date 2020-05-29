@@ -18,7 +18,7 @@ npm run test
 ![Jest results](http://g.recordit.co/xVS6ze6RFi.gif)
 <br>
 ![Jest results](http://g.recordit.co/pP1L8gXe7q.gif)
-###### *Don't run test while the app is on*
+##### *Don't run tests while the app is on*
 
 
 ## Migrations 
